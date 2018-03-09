@@ -19,7 +19,7 @@ class Tests extends FunSuite {
     assert(Person.returnPersonalInformation(clark)== ("Clark Kent", "Superman" , 33, true))
     assert(Person.returnPersonalInformation(clark)._2 == "Superman")
     val(name, superheroName, age, single) = Person.returnPersonalInformation(clark)
-    assert(superheroName == "Superman ")
+    assert(superheroName == "Superman")
   }
 
   test("AnonimusFuntions"){
@@ -41,6 +41,14 @@ class Tests extends FunSuite {
   test("HigherOrderFuntions"){
     val result = HigherOrdenFunctions.summation(10, HigherOrdenFunctions.closure)
     assert(result == 15)
+
+    //retornando funcionaes
+    assert(HigherOrdenFunctions.addWithoutSyntaxSugar(1).
+      isInstanceOf[Function1[Int, Int]] == true)
+    assert(HigherOrdenFunctions.addWithoutSyntaxSugar(2)(3) ==5)
+
+    def fiveAdder: Function1[Int, Int] = HigherOrdenFunctions.addWithoutSyntaxSugar(5)
+    assert(fiveAdder(5) == 10)
   }
 }
 

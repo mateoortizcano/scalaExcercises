@@ -53,5 +53,13 @@ object HigherOrdenFunctions {
   def summation(x: Int, y: Int => Int) = y(x)
 
   def closure = (x: Int) ⇒ x + 5
+
+  def addWithoutSyntaxSugar(x: Int): Function1[Int, Int] = {
+    new Function1[Int, Int]() {
+      def apply(y: Int): Int = x + y
+    }
+  }
+  //el metodo anterior se puede escribir como funcion anonima así:
+  //def addWithSyntaxSugar(x: Int) = (y: Int) ⇒ x + y
 }
 
